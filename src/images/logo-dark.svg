@@ -1,0 +1,20 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <title>Layer 1</title>
+  <path id="svg_15" d="m916.6601,337.64908l0.02706,0.28147l-0.01116,0.03322l0.03408,0.24116l-0.01115,0.04027l0.04213,0.40384l-0.07146,-0.30948l0.01363,-0.04298l-0.0444,-0.19822l0.01591,-0.06126l-0.04688,-0.20794l0.05224,-0.18009z" stroke="#000" fill="#fff"/>
+  <ellipse ry="44" rx="44" id="svg_20" cy="221.2" cx="419.58511" stroke-width="17" stroke="#000000" fill="none"/>
+  <line transform="rotate(-12.7772, 452.2, 156.2)" id="svg_24" y2="135.2" x2="470.2" y1="177.2" x1="434.2" stroke-width="13" stroke="#000000" fill="none"/>
+  <line transform="rotate(17.1057, 389.7, 157.2)" id="svg_25" y2="137.21709" x2="371.07036" y1="177.1829" x1="408.32964" stroke-width="12" stroke="#000000" fill="none"/>
+  <ellipse ry="30.5" rx="30.5" id="svg_28" cy="108.7" cx="367.08511" stroke-width="8" stroke="#000000" fill="none"/>
+  <line transform="rotate(-65.6171, 343.193, 240.999)" id="svg_29" y2="216.89327" x2="320.72023" y1="265.10382" x1="365.66592" stroke-width="12" stroke="#000000" fill="none"/>
+  <ellipse ry="16.5" rx="16.5" id="svg_30" cy="255.70012" cx="300.10649" stroke-width="8" stroke="#000000" fill="none"/>
+  <line transform="rotate(-62.9429, 491.534, 218.2)" id="svg_31" y2="198.21709" x2="472.90474" y1="238.1829" x1="510.16402" stroke-width="12" stroke="#000000" fill="none"/>
+  <ellipse ry="30.5" rx="30.5" id="svg_32" cy="206.70011" cx="544.10649" stroke-width="8" stroke="#000000" fill="none"/>
+  <line transform="rotate(-65.6171, 445.2, 289.2)" id="svg_33" y2="268.2" x2="463.2" y1="310.2" x1="427.2" stroke-width="13" stroke="#000000" fill="none"/>
+  <ellipse ry="18" rx="18" id="svg_34" cy="329.2" cx="464.5851" stroke-width="8" stroke="#000000" fill="none"/>
+  <line transform="rotate(-23.6738, 386.2, 293.2)" id="svg_35" y2="269.85398" x2="406.32043" y1="316.54601" x1="366.07956" stroke-width="13" stroke="#000000" fill="none"/>
+  <ellipse transform="rotate(180, 472.585, 116.2)" ry="22" rx="22" id="svg_36" cy="116.2" cx="472.5851" stroke-width="8" stroke="#000000" fill="none"/>
+  <ellipse transform="rotate(180, 371.585, 341.2)" ry="22" rx="22" id="svg_37" cy="341.2" cx="371.5851" stroke-width="8" stroke="#000000" fill="none"/>
+ </g>
+</svg>
