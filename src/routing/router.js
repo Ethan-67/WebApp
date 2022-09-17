@@ -1,12 +1,12 @@
-const { generateRoute } = require('./generateRoute') 
-const { handleGetRequest, handlePostRequest, handleRedirect } = require('./handleRequest')
+import { generateRoute } from './generateRoute.js'
+import { handleGetRequest, handlePostRequest, handleRedirect } from './handleRequest.js'
 
 const _get = 'GET' 
 const _post = 'POST'
 const _put = 'PUT' 
 const _delete = 'DELETE'
 
-class Router {
+export default class Router {
     constructor() {
         this.routes = {} 
     }
@@ -70,4 +70,3 @@ class Router {
         })
     }
 }
-module.exports.Router = Router

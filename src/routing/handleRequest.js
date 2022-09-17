@@ -1,28 +1,33 @@
-const fs = require('fs') 
+import fs from 'fs'
 
-const handleGetRequest = async (req, res, route) => {
+export const handleGetRequest = async (req, res, route) => {
     if (route.base.endsWith('.json')) {
         route.callback(req, res) 
     }
     else {
         await readViewData(req, res, route)
-        .then((data) => sendResponse(data, req, res, route))  
-        .then((httpInfo) =>{ 
+        .then(data => sendResponse(data, req, res, route))  
+        .then(httpInfo =>{ 
             let [req, res] = httpInfo
             route.callback(req, res)
         })
         .then(() => res.end())
+        .catch(err => {
+            route.path = './src/views/404.html'
+            readViewData(req, res, route)
+            .then(data => sendResponse(data, req, res, route))  
+            .then(res.end())
+        }) 
+        
     }
 }
-module.exports.handleGetRequest = handleGetRequest
 
 const readViewData = (req, res, route) => {
     return new Promise( (resolve, reject) => {
         fs.readFile(route.path, (err, data) => {
             if (err) {
                 console.error(err) 
-                route.path = './src/views/404.html'
-                readViewData(req, res, route)
+                reject(err)
             }
             else {
                 // data = view.html
@@ -38,11 +43,10 @@ const sendResponse = (data, req, res, route) => {
     return [req, res]
 }
 
-const handlePostRequest = (req, res, route) => {
+export const handlePostRequest = (req, res, route) => {
     readRequestBody(req, res)
     .then( (body) => route.callback(req, res, body) )
 }
-module.exports.handlePostRequest = handlePostRequest
 
 const readRequestBody = async(req, res) => {
     return new Promise( (resolve, reject) => {
@@ -59,8 +63,7 @@ const readRequestBody = async(req, res) => {
     })
 }
 
-const handleRedirect = (req, res, route) => {
+export const handleRedirect = (req, res, route) => {
     let data = fs.readFileSync(route.path)  
     sendResponse(data, req, res, route)
 }
-module.exports.handleRedirect = handleRedirect

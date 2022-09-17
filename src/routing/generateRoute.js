@@ -1,6 +1,6 @@
-const path = require('path')
+import path from 'path'
 
-const generateRoute = (pathName, method, callback) => {
+export const generateRoute = (pathName, method, callback) => {
     if (callback === undefined) 
         callback = () => {}
     let fileExtension = getFileExtension(pathName)
@@ -12,12 +12,10 @@ const generateRoute = (pathName, method, callback) => {
         headers: [{'Content-Type' : getContentType(fileExtension)}]
     }
 }
-module.exports.generateRoute = generateRoute
 
-const retrievePath = (pathName, fileExtension) => {
+export const retrievePath = (pathName, fileExtension) => {
     return getFileDirectory(fileExtension) + getFileName(pathName) + fileExtension
 }
-module.exports.retrievePath = retrievePath
 
 const supportedExtensions = {
     '.html' : 'text/html', 

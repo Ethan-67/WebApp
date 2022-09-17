@@ -1,9 +1,10 @@
+/* Global */
+
 :root {
     --bg-grey-dark: #1b1b1b;
-    --bg-grey-medium: #262626;
+    --bg-grey-medium: #2a2a2a;
     --bg-grey-light: #595959;
     --hightlight-1: rgb(128, 128, 0); 
-    
 }
 
 html {
@@ -11,7 +12,21 @@ html {
 }
 
 * {
-    color: white
+    color: white; 
+    font-family: system-ui;
+}
+
+body {
+    margin: 0vh 0vw; 
+}
+
+nav {
+    margin: 2vh 1vw;
+    font-size: 1.5em;
+}
+
+[hidden] {
+    display: none !important;
 }
 
 /* navigation */
@@ -24,9 +39,9 @@ html {
     flex-flow: row wrap; 
 }
 
-.mobile-nav {
+.mobile-nav-wrapper {
     flex: auto;
-    padding: 2vh 0 0 4vw;
+    padding: 3.5vh 0 0 5vw;
 }
 
 .mobile-menu-btn {
@@ -38,28 +53,101 @@ html {
     cursor: pointer; 
 }
 
-.nav-brand {
-    flex: auto;
-    display: inline-block; 
-    text-align: center;
+.nav-brand-wrapper {
+    flex: 1 1 10%;
+    text-align: left;
+    padding: 2vh 0 2vh 4vw; 
 }
 
-#brand-logo {
-    padding: 4vh 0 0 0;
-}
+.nav-links-wrapper  {
+    flex: 1 1 70%;
+    display: flex;   
+    justify-content: right;
+    align-items: center; 
+}   
 
-.profile-wrapper {
-    flex: auto;
-    display: inline-block; 
-    text-align: right;
-    padding: 4vh 2vw 0 0;
-}
-
-#nav-links {
-    flex-direction: column;
-    padding: 2vh 2vw;
+#home-redirect {
+    padding-top: 6.5vh;
 }
 
 .nav-link {
+    display: block; 
     text-decoration: none;
+    text-align: center;
+    cursor: pointer;    
+    border-radius: .25rem;
+    padding: .5vh 2vw; 
+    margin: .5vh 2vw; 
+    transition: background-color .15s ease-out; 
+}
+
+.nav-link:hover {
+    background-color: var(--bg-grey-light);
+}
+
+#nav-links {
+    max-height: 0; 
+    padding-bottom: 2vh;    
+}
+
+.profile-wrapper {
+    flex: 1 1 10%;
+    display: flex; 
+    justify-content: right;
+    align-items: center;
+    padding: 0 4vw 0 0;
+}
+
+/* Utility */
+
+.container {
+    width: 99.82%;
+    height: auto;
+    padding: 1vh 0 1vh 0;
+}
+
+/* Home */ 
+
+.span-p {
+    font: 2rem system-ui; 
+    margin: 0; 
+    padding: 0 1vw 0 1vw; 
+    color: black;
+}
+
+.orange-wrapper {
+    background-color: rgb(225, 147, 0);
+    border: .15rem solid black;
+}
+
+/* Responisve Mobile */ 
+@media (max-width: 576px) {
+    .nav-brand-wrapper {
+        text-align: center;
+    }
+
+    #home-redirect {
+        padding-top: 2vh;
+    }
+
+    .span-p {
+        font-size: 1rem;
+        font-weight: bold;
+    }
+}
+
+/* Responisve Tablet */ 
+@media (max-width: 768px) {
+    nav {
+        font-size: 1.25em;
+    }
+
+    .nav-brand-wrapper {
+        text-align: center;
+    }
+
+    .span-p {
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
 }

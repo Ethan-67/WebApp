@@ -1,29 +1,40 @@
 <!DOCTYPE html>
 
     <head>
-        <script defer type="text/javascript" src="./src/clientside/index.js"></script>
+        <script defer type="module" src="./src/clientside/index.js"></script>
         <link rel="stylesheet" href="../styles/main.css">
     </head>
 
     <body>
         <nav id="nav-bar">
             <div id="nav-bar-wrapper">
-                <div class="mobile-nav" aria-label="mobile-menu" aria-controls="nav-links">
+                <div class="mobile-nav-wrapper" aria-label="mobile-menu" aria-controls="nav-links">
                     <button class="mobile-menu-btn" type="button">
-                        <img id="menu-icon" src="../images/menu-light.svg" width="50px" height="50px" /> 
+                        <img id="menu-icon" src="../images/menu-light.svg" width="22px" height="27px" /> 
                     </button>
                 </div>
 
-                <div class="nav-brand">
-                    <img id="brand-logo" src="../images/logo-light.svg" width="50px" height="50px" /> 
+                <div class="nav-brand-wrapper">
+                    <a href="/" id="home-redirect">
+                        <img id="brand-logo" src="../images/logo-light.svg" width="50px" height="50px" /> 
+                    </a>
+                </div>
+
+                <div class="nav-links-wrapper">
+                    <a class="nav-link" href="link1">Link 1</a>
+                    <a class="nav-link" href="link1">Link 2</a>
+                    <a class="nav-link" href="link1">Link 3</a>
+                    <a class="nav-link" href="link1">Link 4</a>
                 </div>
 
                 <div class="profile-wrapper">
-                    <img id="profile-icon" src="../images/profile-light.svg" width="50px" height="50px" /> 
+                    <a href="/login">
+                        <img id="profile-icon" src="../images/profile-light.svg" width="30px" height="30px" /> 
+                    </a>
                 </div>
             </div>
 
-            <div id="nav-links">
+            <div id="nav-links" hidden>
                 <a class="nav-link" href="link1">Link 1</a>
                 <a class="nav-link" href="link1">Link 2</a>
                 <a class="nav-link" href="link1">Link 3</a>
@@ -31,11 +42,11 @@
             </div>
         </nav> 
 
-        <h1>Home</h1>
+        <div class="container orange-wrapper">
+            <p class="span-p">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc iaculis ut quam mollis interdum.
+            </p>
+        </div>
 
-        <form method="post"> 
-            <input name="field1" placeholder="field1" /> 
-            <input type="submit" />
-        </form>
     </body>
 </html>

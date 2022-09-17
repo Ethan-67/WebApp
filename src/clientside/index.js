@@ -1,36 +1,61 @@
-let mobileMenuBtn = document.getElementsByClassName('mobile-menu-btn')[0]
-let mobileMenu = document.getElementById('nav-links') 
+import { getBreakPoint } from "./breakPoints.js";
 
-mobileMenu.style.display = 'none'; 
+const mobileMenu = document.getElementsByClassName('mobile-nav-wrapper')[0]
+const desktopLinks = document.getElementsByClassName('nav-links-wrapper')[0]
 
-mobileMenuBtn.addEventListener('click', (e) => {
-    if (mobileMenu.style.display === 'none') {
-        mobileMenu.style.display = 'flex'; 
-        mobileMenuBtn.style.backgroundColor = '#BDB76B'
+
+let throttled = false,
+    menuActive = false,
+    delay = 250
+
+desktopLinks.setAttribute('hidden', '')
+console.log(desktopLinks)
+const handleHiddenElements = () => {
+    if (!throttled) {
+        const mode = getBreakPoint(window.innerWidth) 
+        console.log(mode)
+        switch (mode) {
+            case 'mobile': 
+                mobileMenu.removeAttribute('hidden')
+                desktopLinks.setAttribute('hidden', '') 
+            break;
+            case 'desktop':   
+            case 'tablet': 
+                mobileMenu.setAttribute('hidden', '')
+                mobileLinks.setAttribute('hidden', '')
+                desktopLinks.removeAttribute('hidden') 
+            break; 
+            default: 
+        }
+        throttled = true
+        setTimeout(() => {
+            throttled = false 
+        }, delay)
+    }
+}
+
+window.addEventListener('load', handleHiddenElements) 
+window.addEventListener('resize', handleHiddenElements)
+
+const mobileLinks = document.getElementById('nav-links') 
+
+const handleMobileMenu = (e) => {
+    if (!menuActive) {
+        mobileLinks.removeAttribute('hidden')
+        menuActive = true
     }
     else {
-        mobileMenu.style.display = 'none'
-        mobileMenuBtn.style.backgroundColor = '#262626'
+        mobileLinks.setAttribute('hidden', '') 
+        menuActive = false
     }
-})
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+for (let i = 0; i < mobileMenu.children.length; i++) {
+    if (mobileMenu.children[i] instanceof HTMLButtonElement) {
+        mobileMenu.children[i].addEventListener('click', handleMobileMenu) 
+        break
+    }
+}
 
 
 

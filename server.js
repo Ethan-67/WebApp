@@ -1,5 +1,5 @@
-const http = require('http');
-const { Router } = require('./src/routing/router')
+import http from 'http'
+import Router from './src/routing/router.js'
 
 const hostname = '127.0.0.1'
 const port = 3000
