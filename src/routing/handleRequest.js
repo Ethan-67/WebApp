@@ -1,24 +1,25 @@
 import fs from 'fs'
 
 export const handleGetRequest = async (req, res, route) => {
-    if (route.base.endsWith('.json')) {
-        route.callback(req, res) 
+    if (route.path.endsWith('.json')) {
+        readRequestBody(req, res)
+        .then( body => route.callback(req, res, body))
     }
     else {
         await readViewData(req, res, route)
-        .then(data => sendResponse(data, req, res, route))  
-        .then(httpInfo =>{ 
-            let [req, res] = httpInfo
-            route.callback(req, res)
-        })
-        .then(() => res.end())
-        .catch(err => {
-            route.path = './src/views/404.html'
-            readViewData(req, res, route)
             .then(data => sendResponse(data, req, res, route))  
-            .then(res.end())
-        }) 
-        
+            .then(httpInfo =>{ 
+                let [req, res] = httpInfo
+                route.callback(req, res)
+            })
+            .then(() => res.end())
+            .catch(err => {
+                route.path = './src/views/404.html'
+                // readViewData(req, res, route)
+                // .then(data => sendResponse(data, req, res, route))  
+                // .then(res.end())
+                handleGetRequest(req, res, route)
+            }) 
     }
 }
 
@@ -63,7 +64,10 @@ const readRequestBody = async(req, res) => {
     })
 }
 
+// TODO 
 export const handleRedirect = (req, res, route) => {
-    let data = fs.readFileSync(route.path)  
-    sendResponse(data, req, res, route)
+    res.writeHead(301, {
+        'Location' : 'https://127.0.0.1:3000/games'
+    })
+    res.end()
 }

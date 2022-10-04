@@ -1,31 +1,25 @@
-import http from 'http'
+import https from 'https'
 import Router from './src/routing/router.js'
+
+import{ readFileSync } from 'fs'
+import { createRoutes } from './src/routing/routes.js'
+import { handleWSRequest } from './src/routing/handleWS.js'
 
 const hostname = '127.0.0.1'
 const port = 3000
+
 const router = new Router()
 
-router.get('/', (req, res) => {
-    console.log('GET index.html') 
-})
+// const wss = new WebSocketServer({ noServer: true })
 
-router.post('/', (req, res, body) => {
-    console.log('POST index.html: ' + body)
-    router.redirect(req, res, '/')
-    res.end()
-})
+createRoutes(router)
 
-router.get('/privacy', (req, res) => {
-    console.log('GET privacy.html') 
-})
+const options = {
+    key:  readFileSync('./src/cert/key.pem'),
+    cert: readFileSync('./src/cert/cert.pem')
+}
 
-router.get('/data.json', (req, res) => {
-    console.log('/dataJSON')
-    res.writeHead(200, {'Content-Type' : 'application/json'})
-    res.end()
-})
-
-const server = http.createServer( (req, res) => {
+const server = https.createServer( options, (req, res) => {
     console.log('incoming request: ' + req.url)
 
     router.directRequest(req, res)
@@ -33,6 +27,10 @@ const server = http.createServer( (req, res) => {
     console.log()
 })
 
+// server.on('upgrade', (req, socket, head) => {
+//     handleWSRequest(req, socket, head, router)      
+// })
+
 server.listen(port, hostname, () => {
-    console.log(`Server listening on: http://${hostname}:${port}/`)
+    console.log(`Server listening on: https://${hostname}:${port}/`)
 })

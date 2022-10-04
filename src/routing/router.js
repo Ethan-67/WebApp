@@ -13,6 +13,7 @@ export default class Router {
 
     directRequest(req, res) {
         let route = this.#getRoute(req.url, req.method)
+        this.get('d', ()=> {})
         switch (req.method) {
             case _get: 
                 handleGetRequest(req, res, route)

@@ -1,8 +1,10 @@
 import path from 'path'
+import fs from 'fs'
 
 export const generateRoute = (pathName, method, callback) => {
     if (callback === undefined) 
         callback = () => {}
+        
     let fileExtension = getFileExtension(pathName)
     return {
         base: pathName, 
@@ -13,8 +15,27 @@ export const generateRoute = (pathName, method, callback) => {
     }
 }
 
+// ROUTES ARE FROZEN !"££!"$$!%!"$"
+
 export const retrievePath = (pathName, fileExtension) => {
-    return getFileDirectory(fileExtension) + getFileName(pathName) + fileExtension
+    let absolutePath = findFileRecursive(fs.readdirSync('./src'), './src', getFileName(pathName) + fileExtension)
+    console.log(absolutePath)   
+    return absolutePath
+}
+
+// search every directory in ./src/ to find specified file return the file's path
+const findFileRecursive = (directory, path, item) => {
+    for (let element of directory) {
+        let stat = fs.statSync(path + '/' + element)
+        if (stat.isDirectory()) {
+            let res = findFileRecursive(fs.readdirSync(path + '/' + element), path + '/' + element, item)
+            if (res != undefined) 
+                return res
+        }
+        else 
+            if (element === item) 
+                return path + '/' + element 
+    }
 }
 
 const supportedExtensions = {
@@ -22,15 +43,6 @@ const supportedExtensions = {
     '.js' : 'text/javascript', 
     '.css' : 'text/css', 
     '.svg' : 'image/svg+xml'
-}
-// hard coded corresponding files need to belong to these directories 
-const fileDirectories = {
-    '.html' : './src/views/', 
-    '.js' : './src/clientside/', 
-    '.css' : './src/styles/', 
-    '.ico' : './src/images/',
-    '.img' : './src/images/', 
-    '.svg' : './src/images/',
 }
 
 const getFileName = (pathname) => {
@@ -50,6 +62,10 @@ const getContentType = (fileExtension) => {
     return supportedExtensions[fileExtension] ?? 'application/octet-stream'
 }
 
-const getFileDirectory = (fileExtension) => {
-    return fileDirectories[fileExtension] ?? './'
-}
+// fs.readdirSync('./src')
+    //     .forEach( elementDir => fs.readdirSync('./src/' + elementDir)
+    //         .find( element => {
+                
+    //             if (element.toString() === getFileName(pathName) + fileExtension)
+    //                 absolutePath += elementDir + '/' + getFileName(pathName) + fileExtension
+    //         }))

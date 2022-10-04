@@ -6,47 +6,21 @@
     </head>
 
     <body>
-        <nav id="nav-bar">
-            <div id="nav-bar-wrapper">
-                <div class="mobile-nav-wrapper" aria-label="mobile-menu" aria-controls="nav-links">
-                    <button class="mobile-menu-btn" type="button">
-                        <img id="menu-icon" src="../images/menu-light.svg" width="22px" height="27px" /> 
-                    </button>
-                </div>
-
-                <div class="nav-brand-wrapper">
-                    <a href="/" id="home-redirect">
-                        <img id="brand-logo" src="../images/logo-light.svg" width="50px" height="50px" /> 
-                    </a>
-                </div>
-
-                <div class="nav-links-wrapper">
-                    <a class="nav-link" href="link1">Link 1</a>
-                    <a class="nav-link" href="link1">Link 2</a>
-                    <a class="nav-link" href="link1">Link 3</a>
-                    <a class="nav-link" href="link1">Link 4</a>
-                </div>
-
-                <div class="profile-wrapper">
-                    <a href="/login">
-                        <img id="profile-icon" src="../images/profile-light.svg" width="30px" height="30px" /> 
-                    </a>
-                </div>
+        <div class="container">
+            <div class="index-title-wrapper">
+                <h1 class="login-title">Login</h1>
             </div>
 
-            <div id="nav-links" hidden>
-                <a class="nav-link" href="link1">Link 1</a>
-                <a class="nav-link" href="link1">Link 2</a>
-                <a class="nav-link" href="link1">Link 3</a>
-                <a class="nav-link" href="link1">Link 4</a>
-            </div>
-        </nav> 
+            <form method="post" id="login-form">
+                <input name="username" type="text" class="login-field" placeholder="username" />
+                <span class="username-error-check text-danger"></span>
+                <input name="password" type="password" class="login-field" placeholder="password" />
+                <span class="password-error-check text-danger"></span>
+                <button class="index-submit-btn btn bg-navy">Submit</button>
+                <span class="form-crediental-check text-danger"></span>
+            </form>
 
-        <div class="container orange-wrapper">
-            <p class="span-p">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc iaculis ut quam mollis interdum.
-            </p>
+            <a href="/games.html">go</a>
         </div>
-
     </body>
 </html>
